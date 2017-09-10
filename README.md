@@ -113,6 +113,13 @@ to libsocket\_hl on SunOS. You have to link your programs using the flag `-lsock
 libsocket does not work on OpenBSD yet because there are some more fundamental source level incompatibilities
 than those between Linux and FreeBSD/OpenIndiana-SunOS.
 
+### Android
+In /C/unix/libunixsocket.c , use #ifdef rather than #if
+In CMakeLists.txt add -DBD_ANDROID inside ADD_DEFINITIONS
+Then issue cmake command i.e: cmake -DCMAKE_TOOLCHAIN_FILE=/media/tuhin/tuhin/Android/android-ndk-r15/build/cmake/android.toolchain.cmake -DANDROID_ABI=armeabi-v7a .
+
+Then make and strip the library.
+
 ### Other OSs
 If you're using libsocket successfully on other platforms (or even ported it), please let me know.
 

@@ -3,6 +3,8 @@ LOCAL_PATH := $(call my-dir)
 C_SRC := ../C
 CPP_SRC := ../C++
 
+$(warning JNI is not Buildable at this moment. Rather use cmake.)
+
 define traverse
   $(wildcard $(1)) $(foreach e, $(wildcard $(1)/*), $(call traverse, $(e)))
 endef
