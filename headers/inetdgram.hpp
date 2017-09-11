@@ -7,10 +7,8 @@
 
 # include "inetbase.hpp"
 
-# include <unistd.h>
-# include <sys/socket.h>
-# include <sys/types.h>
 # include <stdio.h>
+# include <sockheader.h>
 
 /**
  * @file inetdgram.hpp

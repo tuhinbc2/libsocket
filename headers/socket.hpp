@@ -1,10 +1,7 @@
 #ifndef LIBSOCKET_SOCKET_H_CCC0882809A540AAAD842D9AE3DB47BB
 #define LIBSOCKET_SOCKET_H_CCC0882809A540AAAD842D9AE3DB47BB
 
-# include <sys/socket.h>
-# include <sys/types.h>
-
-# include <errno.h>
+# include <sockheader.h>
 
 # include "exception.hpp"
 

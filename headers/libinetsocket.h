@@ -28,8 +28,7 @@
 */
 
 /* Headers (e.g. for flags) */
-# include <sys/types.h>
-# include <sys/socket.h>
+# include <sockheader.h>
 
 /* Macro definitions */
 

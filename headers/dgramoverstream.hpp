@@ -11,8 +11,7 @@
 # include <memory>
 
 
-# include <netinet/ip.h>
-# include <netinet/tcp.h>
+# include <sockheader.h>
 
 /**
  * @file dgramoverstream.hpp

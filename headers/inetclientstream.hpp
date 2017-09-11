@@ -1,9 +1,7 @@
 #ifndef LIBSOCKET_INETCLIENTSTREAM_H_64300E32D2CB4AD99D557F79F8D340CA
 #define LIBSOCKET_INETCLIENTSTREAM_H_64300E32D2CB4AD99D557F79F8D340CA
 
-# include <string>
-# include <sys/types.h>
-# include <sys/socket.h>
+# include <sockheader.h>
 
 # include "inetbase.hpp"
 # include "streamclient.hpp"

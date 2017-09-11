@@ -1,3 +1,5 @@
+#ifndef _WINDOWS
+
 # ifndef _GNU_SOURCE
 # define _GNU_SOURCE // accept4()
 # endif
@@ -456,3 +458,5 @@ ssize_t sendto_unix_dgram_socket(int sfd, const void* buf, size_t size, const ch
  */
 
 #undef debug_write
+
+#endif

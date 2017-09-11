@@ -2,8 +2,7 @@
 #define LIBSOCKET_INETDGRAMCLIENT_H_1E7B8B3247594112BB2CEB2895E916E4
 
 # include <string>
-# include <sys/types.h>
-# include <sys/socket.h>
+# include <sockheader.h>
 
 # include "inetdgram.hpp"
 # include "dgramclient.hpp"

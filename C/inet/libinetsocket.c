@@ -4,27 +4,13 @@
 
 # include "conf.h"
 #define LIBSOCKET_VERSION 2.4
-#ifdef BD_ANDROID
-#define LIBSOCKET_LINUX 0
-#else
-#define LIBSOCKET_LINUX 1
-#endif
-#define LIBSOCKET_FREEBSD 0
-#define LIBSOCKET_SUNOS 0
-
 
 # include <stdlib.h>
 # include <stdio.h>
-# include <sys/socket.h>
-# include <sys/types.h>
-# include <unistd.h> // read()/write()
 # include <stdint.h>
-# include <netdb.h> // getaddrinfo()
 # include <string.h>
-# include <errno.h>
-# include <sys/ioctl.h>
-# include <net/if.h>
-# include <netinet/in.h> // e.g. struct sockaddr_in on OpenBSD
+
+#include <sockheader.h>
 
 /**
  * @file    libinetsocket.c
@@ -119,7 +105,7 @@
  * @retval 0 The syscall was successful.
  * @retval -1 There was an error.
  */
-static inline signed int check_error(int return_value)
+static signed int check_error(int return_value)
 {
 # ifdef VERBOSE
     const char* errbuf;
@@ -134,6 +120,27 @@ static inline signed int check_error(int return_value)
     }
 
     return 0;
+}
+
+void start_networking()
+{
+#ifdef _WINDOWS
+	WSADATA wsadata;
+	if (WSAStartup(MAKEWORD(2, 0), &wsadata) != 0)
+	{
+		printf("WSAStartup Failed.");
+	}
+#endif
+}
+
+void shutdown_networking()
+{
+#ifdef _WINDOWS
+	if (WSACleanup() != 0) 
+	{
+		printf("WSACleanup Failed.");
+	}
+#endif
 }
 
 /**

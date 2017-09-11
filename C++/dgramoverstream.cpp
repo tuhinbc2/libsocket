@@ -1,6 +1,6 @@
 # include <string>
-# include <unistd.h>
 # include <string.h>
+#include <sockheader.h>
 
 /*
    The committers of the libsocket project, all rights reserved

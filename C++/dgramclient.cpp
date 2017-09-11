@@ -1,6 +1,7 @@
 # include <string>
-# include <unistd.h>
 # include <string.h>
+
+#include <sockheader.h>
 
 /*
    The committers of the libsocket project, all rights reserved
@@ -75,7 +76,7 @@ namespace libsocket
 
 	memset(buf,0,len);
 
-	if ( -1 == (bytes = recv(sfd,buf,len,flags)) )
+	if ( -1 == (bytes = recv(sfd,(char*)buf,len,flags)) )
 	    throw socket_exception(__FILE__,__LINE__,"dgram_client_socket::rcv() - recv() failed!");
 
 	return bytes;
@@ -136,7 +137,7 @@ namespace libsocket
 	if ( connected != true )
 	    throw socket_exception(__FILE__,__LINE__,"dgram_client_socket::snd() - Socket is not connected!", false);
 
-	if ( -1 == (bytes = send(sfd,buf,len,flags)) )
+	if ( -1 == (bytes = send(sfd,(const char*)buf,len,flags)) )
 	    throw socket_exception(__FILE__,__LINE__,"dgram_client_socket::snd() - send() failed!");
 
 	return bytes;

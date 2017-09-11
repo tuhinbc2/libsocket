@@ -29,15 +29,13 @@
  * stream-based sockets (TCP and UNIX-SOCK_STREAM).
  */
 
-# include <string>
-# include <unistd.h>
 # include <string.h>
 # include <memory>
 // Inclusion here prevents further inclusion from headers/socket.hpp
 namespace BERKELEY {
-# include <sys/socket.h>
+//# include <sys/socket.h>
 } // Against conflicts (shutdown(2)...)
-
+#include <sockheader.h>
 # include <conf.h>
 # include <libinetsocket.h>
 # include <exception.hpp>
@@ -78,7 +76,7 @@ namespace libsocket
 
 	memset(buf,0,len);
 
-	if ( -1 == (recvd = BERKELEY::recv(sfd,buf,len,flags)) )
+	if ( -1 == (recvd = ::recv(sfd,(char*)buf,len,flags)) )
 	{
 	    if ( is_nonblocking && errno == EWOULDBLOCK )
 		return -1;
@@ -218,7 +216,7 @@ namespace libsocket
 	if ( buf == NULL || len == 0 )
 	    throw socket_exception(__FILE__,__LINE__,"stream_client_socket::snd() - Buffer or length is null!",false);
 
-	if ( -1 == (snd_bytes = BERKELEY::send(sfd,buf,len,flags)) )
+	if ( -1 == (snd_bytes = ::send(sfd,(const char*)buf,len,flags)) )
 	{
 	    if ( is_nonblocking && errno == EWOULDBLOCK )
 		return -1;
@@ -263,7 +261,7 @@ namespace libsocket
 	else // With no valid combination
 	    return;
 
-	if ( 0 > BERKELEY::shutdown(sfd,u_method)) // It's equal whether we use this or its brother from libunixsocket
+	if ( 0 > ::shutdown(sfd,u_method)) // It's equal whether we use this or its brother from libunixsocket
 	{
 	    throw socket_exception(__FILE__,__LINE__,"stream_client_socket::shutdown() - Could not shutdown socket");
 	}

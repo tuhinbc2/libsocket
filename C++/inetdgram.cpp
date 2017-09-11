@@ -3,9 +3,7 @@
 # include <string.h>
 # include <memory>
 
-# include <unistd.h>
-# include <sys/socket.h>
-# include <sys/types.h>
+# include <sockheader.h>
 # include <stdio.h>
 
 // oo wrapper around libinetsocket
